@@ -7,7 +7,9 @@ This Python script calculates and displays a weekly work summary for an employee
 - Average daily billable hours
 - Project with the most hours worked (code and total hours)
 
-> This is an College Work. All the instruction are in the [instructions](./instructions.md) file.
+> This is a College Work and does not agree with real life companies.
+>
+> All the instruction are in the [instructions](./instructions.md) file.
 
 </br>
 
