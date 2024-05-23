@@ -1,4 +1,4 @@
-var lbs = prompt("What is the weight in pounds (lbs)?")
-var kg = lbs*0.454
-alert("That is:  "+kg+" kilograms")
-console.log("Conversion Completed")
+alert("Welcome to the metric convertor!")
+var pounds = prompt("Enter with the value in pounds: ")
+kilograms = pounds / 2.205
+alert(pounds + " pounds in kilograms is " + kilograms)
