@@ -34,15 +34,15 @@ patterns = [ 'term1', 'term2' ]
 text = 'This is a string with term1, but it does not have the other term.'
 
 for pattern in patterns:
-    print 'Searching for "%s" in: \n"%s"' % (pattern, text),
+    print('Searching for "%s" in: \n"%s"' % (pattern, text),)
 
     #Check for match
     if re.search(pattern,  text):
-        print '\n'
-        print 'Match was found. \n'
+        print('\n')
+        print('Match was found. \n')
     else:
-        print '\n'
-        print 'No Match was found.\n'
+        print('\n')
+        print('No Match was found.\n')
 
 
 # Now we've seen that re.search() will take the pattern, scan the text, and then
@@ -114,19 +114,19 @@ re.findall('match','test phrase match is in middle')
 # We can use *metacharacters* along with re to find specific types of patterns.
 #
 # Since we will be testing multiple re syntax forms, let's create a function
-# that will print out results given a list of various regular expressions and
+# that will print(out results given a list of various regular expressions and)
 # a phrase to parse:
 
 
 def multi_re_find(patterns,phrase):
     '''
     Takes in a list of regex patterns
-    Prints a list of all matches
+    Print( a list of all matches)
     '''
     for pattern in patterns:
-        print 'Searching the phrase using the re check: %r' %pattern
-        print re.findall(pattern,phrase)
-        print '\n'
+        print('Searching the phrase using the re check: %r' %pattern)
+        print(re.findall(pattern,phrase))
+        print('\n')
 
 ##########################
 ### Repetition Syntax ####
