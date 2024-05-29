@@ -3,8 +3,11 @@ from django.http import HttpResponse
 
 # Create your views here.
 
-def index(request):
+def first_index(request):
     return HttpResponse("Hello World!")
+
+def index(request):
+    return render(request, 'first_app/index.html')
 
 def help(request):
     helpdict = {'help_inserts':'HELP PAGE'}
