@@ -19,7 +19,7 @@ def get_all_items():
 # {
 # "name": "My Store 1"
 # }
-@app.post("/create_store")
+@app.post("/store/create")
 def create_store():
     request_data = request.get_json()
     
@@ -42,7 +42,7 @@ def create_store():
 # "price": 29.99
 # "store_id": "bcd96514328f44b088ab9523aa6a6849"
 # }
-@app.post("/create_item")
+@app.post("/item/create")
 def create_item():
     request_data = request.get_json()
     
@@ -78,3 +78,25 @@ def get_item(item_id):
         return {"item": items[item_id]}
     except KeyError:
         abort(404, message="Item not found!")
+
+@app.delete("/item/delete/<string:item_id>")
+def delete_item(item_id):
+    try:
+        del items[item_id]
+        return {"message": "Item deleted."}
+    except KeyError:
+        abort(404, message="Item not found!")
+        
+@app.put("/item/update/<string:item_id>")
+def update_item(item_id):
+    request_data = request.get_json()
+    if "price" not in request_data or "name" not in request_data:
+        abort(400, message="Bad request! Ensure 'name', 'price' are included in the JSON payload.")
+    
+    try:
+        item = items[item_id]
+        item |= request_data
+        return item
+    except KeyError:
+        abort(404, message="Item not found!")
+    
