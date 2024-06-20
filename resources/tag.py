@@ -9,7 +9,7 @@ from schemas import TagSchema, TagAndItemSchema
 blp = Blueprint("Tags", "tags", description="Operations on tags")
 
 
-@blp.route("/store/<string:store_id>/tag")
+@blp.route("/store/<int:store_id>/tag")
 class TagsInStore(MethodView):
     @blp.response(200, TagSchema(many=True))
     def get(self, store_id):
@@ -23,7 +23,7 @@ class TagsInStore(MethodView):
         if TagModel.query.filter(TagModel.store_id == store_id, TagModel.name == tag_data["name"]).first():
             abort(400, message="A tag with that name already exists in that store.")
 
-        tag = TagModel(**tag_data, store_id=store_id)
+        tag = TagModel(**tag_data, store_id=store_id) # type: ignore
 
         try:
             db.session.add(tag)
@@ -37,7 +37,7 @@ class TagsInStore(MethodView):
         return tag
 
 
-@blp.route("/item/<string:item_id>/tag/<string:tag_id>")
+@blp.route("/item/<int:item_id>/tag/<int:tag_id>")
 class LinkTagsToItem(MethodView):
     @blp.response(201, TagSchema)
     def post(self, item_id, tag_id):
@@ -70,7 +70,7 @@ class LinkTagsToItem(MethodView):
         return {"message": "Item removed from tag", "item": item, "tag": tag}
 
 
-@blp.route("/tag/<string:tag_id>")
+@blp.route("/tag/<int:tag_id>")
 class Tag(MethodView):
     @blp.response(200, TagSchema)
     def get(self, tag_id):
