@@ -1,6 +1,7 @@
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
 from sqlalchemy.exc import SQLAlchemyError
+from flask_jwt_extended import jwt_required
 
 from db import db
 from models import ItemModel
@@ -16,12 +17,14 @@ class Item(MethodView):
         item = ItemModel.query.get_or_404(item_id)
         return item
 
+    @jwt_required()
     def delete(self, item_id):
         item = ItemModel.query.get_or_404(item_id)
         db.session.delete(item)
         db.session.commit()
         return {"message": "Item deleted."}
 
+    @jwt_required()
     @blp.arguments(ItemUpdateSchema)
     @blp.response(200, ItemSchema)
     def put(self, item_data, item_id):
@@ -45,6 +48,7 @@ class ItemList(MethodView):
     def get(self):
         return ItemModel.query.all()
 
+    @jwt_required()
     @blp.arguments(ItemSchema)
     @blp.response(201, ItemSchema)
     def post(self, item_data):
