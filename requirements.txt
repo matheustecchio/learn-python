@@ -9,3 +9,4 @@ Flask-SQLAlchemy
 passlib
 marshmallow
 gunicorn
+flask-migrate
