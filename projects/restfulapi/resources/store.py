@@ -4,7 +4,7 @@ from sqlalchemy.exc import SQLAlchemyError, IntegrityError
 
 from db import db
 from models import StoreModel
-from schemas import StoreSchema
+from projects.restfulapi.schemas import StoreSchema
 
 
 blp = Blueprint("Stores", "stores", description="Operations on stores")

@@ -5,7 +5,7 @@ from flask_jwt_extended import jwt_required, get_jwt
 
 from db import db
 from models import ItemModel
-from schemas import ItemSchema, ItemUpdateSchema
+from projects.restfulapi.schemas import ItemSchema, ItemUpdateSchema
 
 blp = Blueprint("Items", "items", description="Operations on items")
 

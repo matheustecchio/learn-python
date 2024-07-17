@@ -2,7 +2,7 @@ from flask import Flask, jsonify
 from flask_smorest import Api
 from flask_jwt_extended import JWTManager
 import secrets
-from blocklist import BLOCKLIST
+from projects.restfulapi.blocklist import BLOCKLIST
 
 import models
 

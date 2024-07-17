@@ -4,7 +4,7 @@ from sqlalchemy.exc import SQLAlchemyError
 
 from db import db
 from models import TagModel, StoreModel, ItemModel
-from schemas import TagSchema, TagAndItemSchema
+from projects.restfulapi.schemas import TagSchema, TagAndItemSchema
 
 blp = Blueprint("Tags", "tags", description="Operations on tags")
 

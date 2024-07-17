@@ -1,5 +1,5 @@
 import pytest
-from app import create_app
+from projects.restfulapi.app import create_app
 
 
 @pytest.fixture()
